@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Record Form</title>
+</head>
+<body>
+<form action="insert.php" method="post">
+    <p>
+        <label for="firstName">Имя:</label>
+        <input type="text" name="first_name" id="firstName">
+    </p>
+    <p>
+        <label for="lastName">Фамилия:</label>
+        <input type="text" name="last_name" id="lastName">
+    </p>
+    <p>
+        <label for="emailAddress">Email:</label>
+        <input type="text" name="email" id="emailAddress">
+    </p>
+	<p>
+		<label for="gorod">Город:</label>
+        <select name="gorod" size="1">
+			<option selected>Выбрать город...</option>
+            <option value="Одесса">Одесса</option>
+            <option value="Киев">Киев</option>
+            <option value="Харьков">Харьков</option>
+		</select>
+	</p>
+	<p>
+		<label for="date">Дата:</label>
+		<input type="date" name="date" id="date" value="<?php echo date('Y-m-d') ?>">
+	</p>
+	<p>
+		<label for="time">Время:</label>
+		<input type="time" name="time" id="time" value="<?php echo date('H:i:s') ?>">
+	</p>
+    <input type="submit" value="Отправить">
+</form>
+</body>
+</html>

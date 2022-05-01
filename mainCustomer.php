@@ -303,7 +303,7 @@ if($_SESSION['USER_LOGIN_IN'] != 1){
               <li><a href="about.html">Мои заказы</a></li>
               <li><a href="testimonials.html">Личные сообщения</a></li>
               <li><a href="testwelcome.php">Настройки профиля</a></li>
-              <li><a href="testimonials.html">Вопросы и ответы</a></li>
+              <li><a href="Question.php">Вопросы и ответы</a></li>
               <li><a href="testimonials.html">Баланс</a></li>
               <li><a href="logout.php">Выход</a></li>
             </ul>
@@ -351,7 +351,7 @@ if($_SESSION['USER_LOGIN_IN'] != 1){
             <div class="container">
               <h2 class="">Категории работ</h2>
               <p class="">Проверенные специалисты для выполнения ваших бытовых или бизнес задач.</p>
-              <a href="#" class="btn-get-started scrollto">Узнать больше</a>
+              <a href="#clients" class="btn-get-started scrollto">Узнать больше</a>
             </div>
           </div>
         </div>

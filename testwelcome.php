@@ -92,6 +92,16 @@ body {font-family: "Lato", sans-serif;}
     border-left: none;
     height: 300px;
 }
+
+div.card .card-header {
+    border-radius: 3px;
+    padding: 1rem 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: -30px;
+    border: 0;
+    background: linear-gradient(60deg,#eeee,#bdbdbd);
+}
 </style>
 </head>
 
@@ -367,15 +377,14 @@ body {font-family: "Lato", sans-serif;}
   
   <div class="container">
         <div class="title">
-          <h3>Профиль пользователя</h3>
+          <h3>Профиль пользователя</h3><br>
         </div>
         
         <div class="row">
-            <div class="col-md-7">
-    
+            <div class="col-md-9">
                 <!-- Tabs with icons on Card -->
                 <div class="card card-nav-tabs">
-                    <div class="card-header card-header-primary">
+                    <div class="card-header card-header-danger">
                         <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                         <div class="nav-tabs-navigation">
                             <div class="nav-tabs-wrapper">
@@ -383,48 +392,178 @@ body {font-family: "Lato", sans-serif;}
                                     <li class="nav-item">
                                         <a class="nav-link active" href="#profile" data-toggle="tab">
                                             <i class="material-icons">face</i>
-                                            Profile
+                                            Общая информация
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#messages" data-toggle="tab">
                                             <i class="material-icons">chat</i>
-                                            Messages
+                                            Портфолио
                                         </a>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="nav-link" href="#settingsS" data-toggle="tab">
+                                            <i class="material-icons">file_download</i>
+                                            Стоимость работ
+                                        </a>
+                                    </li>
+									                  <li class="nav-item">
                                         <a class="nav-link" href="#settings" data-toggle="tab">
                                             <i class="material-icons">build</i>
-                                            Settings
+                                            Изменить пароль
                                         </a>
-    
-                                    </li>
-									<li class="nav-item">
-                                        <a class="nav-link" href="#settings" data-toggle="tab">
-                                            <i class="material-icons">file_download</i>
-                                            Settings
-                                        </a>
-    
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                    </div><div class="card-body ">
-                        <div class="tab-content text-center">
-                            <div class="tab-pane active" id="profile">
-                                <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+                    </div>
+                    <div class="card-body ">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="profile">                      
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">Имя пользователя:</th>
+                                  <td class="text-center"><?php echo htmlspecialchars($_SESSION["name"])?></td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Фамилия пользователя:</th>
+                                  <td class="text-center"><?php echo htmlspecialchars($_SESSION["Sur"])?></td>
+                                </tr>
+                                <tr>
+                                  <th><br></th>
+                                  <td><br></td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Email:</th>
+                                  <td class="text-center"></td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Номер телефона:</th>
+                                  <td class="text-center"></td>
+                                </tr>
+                              </tbody>
+                            </table>
                             </div>
                             <div class="tab-pane" id="messages">
-                                <p> I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                                <p> 
+                                  <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                    </div>
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
+                                  </div>
+                                </p>
                             </div>
-                            <div class="tab-pane" id="settings">
-                                <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+                            <div class="tab-pane" id="settingsS">
+                              <p>Указать стоимость ваших услуг в категориях, в которых вы планируете работать можно получив статус "Проверенный специалист".</p>
+                              <div class="text-center"><button type="button" class="btn btn-danger text-center">Получить статус</button></div>
                             </div>
-							<div class="tab-pane" id="settings">
-                                <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+							              <div class="tab-pane" id="settings">
+                              <?php
+                                // Initialize the session
+                                /*session_start();
+                                
+                                // Check if the user is logged in, otherwise redirect to login page
+                                if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+                                    header("location: login.php");
+                                    exit;
+                                }*/
+                                
+                                // Include config file
+                                require_once "config.php";
+                                
+                                // Define variables and initialize with empty values
+                                $new_password = $confirm_password = "";
+                                $new_password_err = $confirm_password_err = "";
+                                
+                                // Processing form data when form is submitted
+                                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                                
+                                    // Validate new password
+                                    if(empty(trim($_POST["new_password"]))){
+                                        $new_password_err = "Please enter the new password.";     
+                                    } elseif(strlen(trim($_POST["new_password"])) < 6){
+                                        $new_password_err = "Password must have atleast 6 characters.";
+                                    } else{
+                                        $new_password = trim($_POST["new_password"]);
+                                    }
+                                    
+                                    // Validate confirm password
+                                    if(empty(trim($_POST["confirm_password"]))){
+                                        $confirm_password_err = "Please confirm the password.";
+                                    } else{
+                                        $confirm_password = trim($_POST["confirm_password"]);
+                                        if(empty($new_password_err) && ($new_password != $confirm_password)){
+                                            $confirm_password_err = "Password did not match.";
+                                        }
+                                    }
+                                        
+                                    // Check input errors before updating the database
+                                    if(empty($new_password_err) && empty($confirm_password_err)){
+                                        // Prepare an update statement
+                                        $sql = "UPDATE users SET password = ? WHERE id = ?";
+                                        
+                                        if($stmt = mysqli_prepare($link, $sql)){
+                                            // Bind variables to the prepared statement as parameters
+                                            mysqli_stmt_bind_param($stmt, "si", $param_password, $param_id);
+                                            
+                                            // Set parameters
+                                            $param_password = password_hash($new_password, PASSWORD_DEFAULT);
+                                            $param_id = $_SESSION["id"];
+                                            
+                                            // Attempt to execute the prepared statement
+                                            if(mysqli_stmt_execute($stmt)){
+                                                // Password updated successfully. Destroy the session, and redirect to login page
+                                                session_destroy();
+                                                header("Location: ../login.php");
+                                                exit();
+                                            } else{
+                                                echo "Oops! Something went wrong. Please try again later.";
+                                            }
+
+                                            // Close statement
+                                            mysqli_stmt_close($stmt);
+                                        }
+                                    }
+                                    
+                                    // Close connection
+                                    mysqli_close($link);
+                                }
+                                ?>
+                                    <div class="wrapper">
+                                        <h2>Сброс пароля</h2>
+                                        <p>Пожалуйста, заполните эту форму, чтобы сбросить пароль.</p>
+                                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+                                            <div class="form-group">
+                                                <label>New Password</label>
+                                                <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
+                                                <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Confirm Password</label>
+                                                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+                                                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <input type="submit" class="btn btn-danger" value="Submit">
+                                                <a class="btn btn-danger ml-2" href="javascript:history.back()">Cancel</a>
+                                            </div>
+                                        </form>
+                                    </div>    
+                                </body>
+                                </html>
                             </div>
                         </div>
-                    </div></div>
+                    </div>
+                  </div>
                 <!-- End Tabs with icons on Card -->
     
             </div>

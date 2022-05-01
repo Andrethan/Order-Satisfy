@@ -281,7 +281,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <button name="write" class="j-submit-report ChooseRole" onclick="window.location.href='mainSpecialist.php'">Специалист</button>
                 </div>
               </li>
-              <li><a href="about.html">Мои заказы</a></li>
+              <li><a href="about.html">Мои объявления</a></li>
               <li><a href="testimonials.html">Личные сообщения</a></li>
               <li><a href="testwelcome.php">Настройки профиля</a></li>
               <li><a href="testimonials.html">Вопросы и ответы</a></li>

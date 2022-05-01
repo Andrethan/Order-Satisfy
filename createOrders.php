@@ -451,8 +451,6 @@ require_once "config.php";
                 <select class="form-control" name="city" id="country" required>
                   <option value="none" selected>Выбрать город...</option>
                   <option value="Одесса">Одесса</option>
-                  <option value="Киев">Киев</option>
-                  <option value="Харьков">Харьков</option>
                 </select>
 
                 <div class="invalid-feedback">

@@ -10,7 +10,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 	require_once "../config.php";
 
-    
+    if(!empty($_REQUEST["category"])) {
     $lol = "Ждет выполнения";
     $category = mysqli_real_escape_string($link, $_REQUEST['category']);
     $subcategory = mysqli_real_escape_string($link, $_REQUEST['subcategory']);
@@ -26,13 +26,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     // Попытка выполнения запроса вставки
     $sql = "INSERT INTO goods (category, subcategory, nazva, description, gorod, district, address, deadline, timedeadline, time, budget, status) VALUES ('$category', '$subcategory', '$nazva', '$desc', '$city', '$district', '$address', '$deadline', '$timedeadline', NOW(), '$grn', '$status')";
+
     if(mysqli_query($link, $sql)){
         echo "<script>alert('Ваши данные успешно добавлены');</script>";
     }
     else{
         echo "ERROR: Не удалось выполнить $sql. " . mysqli_error($link);
         echo "<script>alert('Ваши данные не добавлены" . mysqli_error($link) . "');</script>";
-        }
+    }
+}    
 ?>
 <html>
     <head>
@@ -40,6 +42,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
+        <a href="../mainCustomer.php">Вернуться на главную</a>
         <?php 
         $nameUser = $_SESSION['name'];
         /*if(isset($_GET['del'])){
@@ -84,13 +87,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         </div>
   
                         <!--End of post 1 -->
-                        
                         <?php $products = mysqli_query($link, "SELECT * FROM `goods`"); ?>
                         <?php if($products) : ?>
                             <?php while($resp = mysqli_fetch_assoc($products) ): ?>
                         <div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0">
                             <div class="row align-items-center">
-                            <div class="col-md-8 mb-3 mb-sm-0">
+                            <div class="col-md-7 mb-3 mb-sm-0">
                                 <h5>
                                 <a href="#" class="text-primary"><?php echo $resp['nazva']; ?></a>
                                 </h5>
@@ -98,18 +100,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Темы заказов для обсуждения</a> <!--<a class="text-black mr-2" href="#">#AppStrap Theme</a> <a class="text-black mr-2" href="#">#Wordpress</a>--> 
                                     <?php echo $resp['budget'].' грн.'; ?> &nbsp;&nbsp;&nbsp;&nbsp; 
                                     <?php if(isset($_SESSION['loggedin']) ) : ?>
-                                    <a href="delete.php?id=<?php echo $resp['id'] ?>">Delete</a>
+                                    <a href="delete.php?id=<?php echo $resp['id'] ?>">Удалить</a>
                                     <?php endif; ?>
                                 </div>
                             </div>
                         
 
-                                <div class="col-md-4 op-7">
+                                <div class="col-md-5 op-7">
                                     <div class="row text-center op-7">
-                                        <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm"><?php echo htmlspecialchars($nameUser)?></span> </div>
-                                        <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">Reply's</span> </div>
+                                        <div class="col px-1"><span class="d-block text-sm"><?php echo $resp['status'] ?></span> </div>
+                                        <div class="col px-2"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm"><?php echo htmlspecialchars($nameUser)?></span> </div>
+                                        <div class="col px-2"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">Reply's</span> </div>
                                         <?php if(isset($_SESSION['loggedin']) ) : ?>
-                                            <div class="col px-0"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm"><a href="edit.php?id=<?php echo $resp['id'] ?>">Edit</a></span> </div>
+                                            <div class="col px-0"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm"><a href="edit.php?id=<?php echo $resp['id'] ?>">Изменить</a></span> </div>
                                         <?php endif; ?>    
                                     </div>
                                 </div>

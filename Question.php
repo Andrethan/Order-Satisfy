@@ -545,7 +545,7 @@ require_once "config.php";
             <h4>Полезные ссылки</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="main.php">Главная</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">О нас</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about-us.php">О нас</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Популярные вопросы</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Новостная лента</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="contact.html">Связаться с нами</a></li>
